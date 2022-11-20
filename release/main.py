@@ -1,17 +1,18 @@
 import sqlite3
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
+
+from main_UI import Ui_MainWindow
 
 from change_Dialog import Change_Dialog
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_UI.ui', self)
+        self.setupUi(self)
         self.con = sqlite3.connect("coffee_db.sqlite")
         self.pushButton.clicked.connect(self.open_change)
         self.pushButton_2.clicked.connect(self.open_add)

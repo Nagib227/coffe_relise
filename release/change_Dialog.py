@@ -1,12 +1,12 @@
-from PyQt5 import uic
+from dialog_UI import Ui_Dialog
 from PyQt5.QtWidgets import QDialog
 
 
-class Change_Dialog(QDialog):
+class Change_Dialog(QDialog, Ui_Dialog):
     def __init__(self, parent=None, change=[]):
         super(Change_Dialog, self).__init__(parent)
         self.parent = parent
-        uic.loadUi("dialog_UI.ui", self)
+        self.setupUi(self)
         if not len(change):
             self.pushButton.setText("Добавить")
             self.pushButton.clicked.connect(self.parent.close_add)
